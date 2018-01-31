@@ -8,10 +8,14 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController, UITextFieldDelegate{
+    @IBOutlet weak var nameLabel: UITextField!
+    @IBOutlet weak var cityLabel: UITextField!
+    @IBOutlet weak var messageLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        messageLabel.text = ""
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -20,6 +24,26 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
+    @IBAction func btnSaveClicked(_ sender: Any) {
+        guard let name = nameLabel.text else {
+            messageLabel.text = "You must enter a value for *both* name and city"
+            return
+        }
+        guard let city = cityLabel.text  else {
+            messageLabel.text = "You must enter a value for *both* name and city"
+            return
+        }
+        if(name == "" || city == ""){
+            messageLabel.text = "You must enter a value for *both* name and city"
+        }else{
+            messageLabel.text = "\(name) - \(city)"
+        }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        nameLabel.resignFirstResponder()
+        cityLabel.resignFirstResponder()
+        return true
+    }
 }
 
