@@ -16,8 +16,6 @@ class ViewController: UIViewController, UITextFieldDelegate{
     //Runs when app initally opens
     override func viewDidLoad() {
         super.viewDidLoad()
-        //Sets the message text to empty so the user does not see anything on inital run
-        messageLabel.text = ""
     }
 
     override func didReceiveMemoryWarning() {
